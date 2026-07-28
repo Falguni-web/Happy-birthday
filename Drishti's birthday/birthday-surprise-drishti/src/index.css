@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-script: var(--app-font-script);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-gold: hsl(var(--gold));
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+}
+
+:root {
+  /* Soft lavender / pink / purple palette */
+  --background: 280 40% 95%; /* Soft lavender white */
+  --foreground: 290 50% 15%; /* Deep plum */
+  
+  --primary: 330 60% 65%; /* Soft pink */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 270 50% 70%; /* Soft purple */
+  --secondary-foreground: 0 0% 100%;
+  
+  --accent: 340 70% 80%; /* Light pink accent */
+  --accent-foreground: 290 50% 15%;
+  
+  --gold: 45 80% 60%; /* Soft magical gold */
+
+  --glass: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.6);
+
+  --app-font-sans: 'Outfit', sans-serif;
+  --app-font-serif: 'Playfair Display', serif;
+  --app-font-script: 'Dancing Script', cursive;
+  
+  --radius: 1rem;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-foreground overflow-hidden;
+    background: linear-gradient(135deg, hsl(280 40% 95%), hsl(330 40% 95%), hsl(260 40% 95%));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_rgba(255,192,203,0.2)];
+  }
+  .glass-input {
+    @apply bg-white/50 border border-white/60 focus:outline-none focus:ring-2 focus:ring-[#FFB6C1] transition-all;
+  }
+  .text-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(230, 190, 255, 0.6);
+  }
+  .gold-glow {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+  }
+}
